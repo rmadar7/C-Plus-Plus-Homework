@@ -1,0 +1,32 @@
+/*************************************************************************
+**	Author			:	Ryan Madar
+**	Program			:	hw1, q2
+**	Date Created		:	September 17, 2013
+**	Date Last Modified	:	September 17, 2013
+**	Usage			:	No command line arguments
+**
+**	Problem:
+
+2) Write a complete program that calculates and displays the product of three integers
+read from keyboard. Add comments to the code where appropriate.
+
+**	Pseudocode:
+**	1)	Declare variables for numbers 1 2 and 3
+**	2) 	Request user to insert three integers
+**	3) 	Send a statement of each number followed by the product of all three
+*************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int number1, number2, number3;
+	cout << "Please type in three integers, one at a time." << endl << "Be sure to press enter after each integer" << endl;
+    cin >> number1;
+    cin >> number2;
+    cin >> number3;
+
+    cout << "Product of " << number1 << ", " << number2 << ", " << ", and " << number3 << " is " << number1*number2*number3;
+	return 0;
+}
