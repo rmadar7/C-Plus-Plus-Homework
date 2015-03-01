@@ -1,0 +1,38 @@
+/*************************************************************************
+**	Author			:	Ryan Madar
+**	Program			:	hw1, q4
+**	Date Created		:	September 17, 2013
+**	Date Last Modified	:	September 17, 2013
+**	Usage			:	No command line arguments
+**
+**	Problem:
+
+4) Write a program that inputs an integer that represents a length of time
+in seconds.  The program should then output the number of hours, minutes,
+and seconds that corresponds to that number of seconds.  For example, if
+the user inputs 50391 total seconds then the program should output 13
+hours, 59 minutes, and 51 seconds.
+
+
+**	Pseudocode:
+**	1)	Declare a variable for the number of seconds
+**	2) 	Request user to insert the number of seconds
+**	3) 	Calculate the number of hours, minutes, and seconds
+**  4)  Display the total seconds, and its equivalent in hours, minutes, and seconds
+*************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int totalseconds, seconds, minutes, hours;
+	cout << "Insert the number of seconds for the program" << endl;
+    cin >> totalseconds;
+    seconds = totalseconds%60;
+    minutes = totalseconds/60%60;
+    hours = totalseconds/60/60;
+
+    cout << totalseconds << " total seconds is equivalent to " << hours << " hours, " << minutes << " minutes, and " << seconds << " seconds.";
+	return 0;
+}
