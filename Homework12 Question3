@@ -1,0 +1,81 @@
+/*************************************************************************
+** Author : Ryan Madar
+** Program : hw12, q3
+** Date Created : December 9, 2013
+** Date Last Modified : December 9, 2013
+** Usage : No command line arguments
+**
+** Problem:
+Bubble Sort Improvement: Improve the performance of the bubble sort from hw12-q1 with
+the following: After the rst pass, the largest is guaranteed to be in the last index. So, at each
+iteration of the bubble algorithm, only make the necessary comparisons, i.e. do 9 (assuming
+10 values) comparisons at second iteration, 8 at third, etc.
+
+
+** Pseudocode:
+** 1)Declare the functions and arrays
+** 2)Establish the requested input and pass it to the bubblesort function. Run outer loop, set swapped to false
+** 3)Bubblesort will run two for loops to check the numbers, if n+1 is less than n, run swap. The inner loop will run to T which will reduce each swap
+** 4)Swap places one number in the temp variable, swaps them, replaces the temp again. Set Swapped to true so the loop will run again
+** 5)Output the comparisons, number of times the inner loop is ran.
+*************************************************************************/
+#include <iomanip>
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+void swap(int *dataArray, int n, int counter);
+void bubbleSort(int &comparisons, int *dataArray, int n);
+int dataArray[10]={0};
+
+int main() {
+    int comparisons = 0;
+    cout << "Original Data of 10 integers:\n";
+    for (int counter =0;counter<=9;counter++){
+    cin >> dataArray[counter];
+    }
+
+    bubbleSort(comparisons, dataArray, 10);
+    cout << "\nData items in ascending order:\n";
+    for (int counter = 0; counter<=9;counter++){
+        cout << dataArray[counter] << " ";
+        }
+    cout << "\n\nThe number of comparisons: " << comparisons;
+
+    return 0;
+}
+
+void swap(int *dataArray, int n, int counter){
+    int TemporaryNumber;
+    TemporaryNumber = dataArray[counter];
+    dataArray[counter] = dataArray[counter+1];
+    dataArray[counter+1] = TemporaryNumber;
+}
+
+void bubbleSort(int &comparisons, int *dataArray, int n){
+    int t = 9;
+    int j = 1;
+    bool swapped = true;
+    for (int LengthOfArray = 0; LengthOfArray<= 9 && swapped; LengthOfArray++){
+        swapped = false;
+        for (int Number = 0; Number < t ; Number++ ){
+            if (dataArray[Number+1] < dataArray[Number]){
+                swap(dataArray, 10, Number);
+                swapped = true;
+                }
+            comparisons++;
+        }
+        if (j != 10){
+        cout << "After pass #" << j << " :  ";
+        for (int g = 0; g < t; g++){
+            cout << dataArray[g] << " ";
+        }
+        cout << endl;
+        }
+        t--;
+        j++;
+    }
+}
+
+
+
