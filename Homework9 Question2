@@ -1,0 +1,97 @@
+/*************************************************************************
+** Author : Ryan Madar
+** Program : hw9, q2
+** Date Created : November 19, 2013
+** Date Last Modified : November 19, 2013
+** Usage : No command line arguments
+**
+** Problem:
+An integer is said to be a perfect integer if the sum of its factors, including 1, but not the
+number itself, is equal to the number. For example, 6 is a perfect integer because 6 = 1 + 2
++ 3. Write a function (perfect) that determines whether a given number is a perfect integer.
+Use this function in a program that determines and prints all perfect numbers between 1 and
+1000. Print the factors of each perfect integer to conrm. Put your computer to hard work
+to nd the fth perfect integer. First is 6, second is 28, etc.
+
+** Pseudocode:
+** 1)Declare variable for checking perfect number and finding the next mersenne prime
+** 2)Mersenne Prime function simply finds the next number for perfect integer
+** 3)Perfect function takes the next mersenne prime and finds the perfect number for it
+** 4)Main function will call the functions and output the number as long as its within range of 1000, and when its the fifth perfect number
+*************************************************************************/
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int PerfectNumber(int MersennePrimeNumber);  // Used to return the next perfect number, given a mersenne prime
+bool NextMersennePrime(int PossibleMersennePrime); // Check if next number is a Mersenne Prime
+
+int main() {
+    int PossibleMersennePrime=2, PerfectNumberResult=0, FindingFifth=0;
+    cout << "Perfect Numbers between 1 and 1000 :\n";
+
+    do{
+        while(NextMersennePrime(PossibleMersennePrime) == false){
+            PossibleMersennePrime++;
+        }
+        PerfectNumberResult = PerfectNumber(PossibleMersennePrime);
+        if (PerfectNumberResult <= 1000){
+            cout << PerfectNumberResult << " = 1";
+            for (int Factors=2;Factors<=(PerfectNumberResult/2);Factors++){  // Just used to find the factors of i
+                    if (PerfectNumberResult%Factors == 0){
+                        cout << " + " << Factors;
+                    }
+            }
+            cout << endl;
+            PossibleMersennePrime++;
+        }
+    }while(PerfectNumberResult <= 1000);
+
+    PossibleMersennePrime=2;
+
+    cout << "\nThe Fifth Perfect Number\n\n";
+
+    do{
+        while(NextMersennePrime(PossibleMersennePrime) == false){
+            PossibleMersennePrime++;
+        }
+        PerfectNumberResult = PerfectNumber(PossibleMersennePrime);
+        if (FindingFifth == 4){
+            cout << PerfectNumberResult << " = 1";
+            for (int Factors=2;Factors<=(PerfectNumberResult/2);Factors++){  // Just used to find the factors of i
+                    if (PerfectNumberResult%Factors == 0){
+                        cout << " + " << Factors;
+                    }
+            }
+            cout << endl;
+        }
+            PossibleMersennePrime++;
+            FindingFifth++;
+    }while(FindingFifth != 5);
+
+    return 0;
+}
+
+
+bool NextMersennePrime(int PossibleMersennePrime){
+    int PrimeCheck;
+    PrimeCheck = (pow(2,PossibleMersennePrime)-1);
+        for (int Factors=2; Factors < PrimeCheck/2; Factors++){
+            if (PrimeCheck%Factors == 0){
+                return false;
+            }
+
+        }
+    return true;
+}
+
+int PerfectNumber(int MersennePrimeNumber){
+    int NextPerfectNumber;
+
+    NextPerfectNumber = (pow(2,MersennePrimeNumber-1)*(pow(2,MersennePrimeNumber)-1));
+
+    return NextPerfectNumber;
+}
+
