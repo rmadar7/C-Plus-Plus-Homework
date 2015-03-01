@@ -1,0 +1,41 @@
+/*************************************************************************
+**	Author			:	Ryan Madar
+**	Program			:	hw1, q1
+**	Date Created		:	September 17, 2013
+**	Date Last Modified	:	September 17, 2013
+**	Usage			:	No command line arguments
+**
+**	Problem:
+
+Accept the following information from the user (keyboard):
+- Hw1, hw2 and hw3 (out of 100)
+- Midterm (out of 100)
+- Final exam (out of 100)
+
+**	Pseudocode:
+**	1)	Declare variables
+**	2) 	Request user to insert grades per each assignment
+**	3) 	Send statement declaring the overall grade as the three homeworks added onto the midterm multiplied by 3 and the final exam by 4, divided by 100
+*************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int hw1, hw2, hw3, midterm, finalexam;
+	cout << "You will be asked to insert grades out of 100 points" << endl;
+	cout << "Please insert the first homework assignment grade out of 100" << endl;
+    cin >> hw1;
+    cout << "Please insert the second homework assignment grade out of 100" << endl;
+    cin >> hw2;
+    cout << "Please insert the third homework assignment grade out of 100" << endl;
+    cin >> hw3;
+    cout << "Please insert the midterm grade out of 100" << endl;
+    cin >> midterm;
+    cout << "Please insert the final exam grade out of 100" << endl;
+    cin >> finalexam;
+
+    cout << "Overall Grade: " << ((hw1+hw2+hw3+midterm*3+finalexam*4)/10) << " out of 100";
+	return 0;
+}
