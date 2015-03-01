@@ -1,0 +1,99 @@
+/*************************************************************************
+** Author : Ryan Madar
+** Program : hw6, q1
+** Date Created : October 28, 2013
+** Date Last Modified : October 28, 2013
+** Usage : No command line arguments
+**
+** Problem:
+Write a program that prints a table of binary, octal and hexadecimal equivalents of the deci-
+mal numbers in the range 0 through 255.
+
+** Pseudocode:
+** 1)Declare function for the three conversions
+** 2)Main function should output the basic aesthetics, and underneath, input 0-255 for each three function and output
+** 3)Set up the three functions. Convert decimal to binary, decimal to octal, decimal to hex
+*************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+void DecToBin(int number); // Declare the function
+void DecToOctal (int number);
+void DecToHex (int number);
+
+int main() {
+    cout << "Decimal\t\tBinary\t\tOctal\t\tHex\n";
+    cout << "===================================================\n";
+
+    for (int num = 0;num<=255; num++){ // The decimal from 0 to 255
+        cout << num  << "\t\t"; // Output the decimal
+        DecToBin(num); // Output the binary
+        cout << "\t";
+        DecToOctal(num);
+        cout << "\t\t";
+        DecToHex(num);
+        cout << endl;
+    }
+    return 0;
+}
+
+void DecToBin(int number){
+    int remainder=number, value;    // Establish variable for function
+
+    for (int i = 128; i >= 1; i/=2){ // Start i at max decimal value for conversion
+
+        if (remainder/i >= 1)// Easy way to set whether the binary is 1 or 0
+        {
+        value = 1;
+        }
+
+        else if (remainder/i <1)
+        {
+        value = 0;
+        }
+
+        remainder = (remainder - (value*i)); // The remainder necessary to run the next part of loop
+        cout << value; // output the new value, should be 8 digits
+    }
+}
+
+void DecToOctal(int number){
+    int remainder=number, value;
+
+    for (int i = 64; i>=1; i /= 8){
+    value = remainder/i;
+    remainder = (remainder - (value*i));
+    cout << value;
+
+    }
+
+}
+
+void DecToHex (int number) {
+    int remainder=number, value;
+
+
+    for (int i = 16; i>=1; i/=16) {
+        value = remainder/i;
+
+        remainder = (remainder - (value*i));
+
+        if (value <= 9){
+            cout << value;}
+        else if (value == 10){
+            cout << "a";}
+        else if (value == 11){
+            cout << "b";}
+        else if (value == 12){
+            cout << "c";}
+        else if (value == 13){
+            cout << "d";}
+        else if (value == 14){
+            cout << "e";}
+        else if (value == 15){
+            cout << "f";}
+    }
+
+}
