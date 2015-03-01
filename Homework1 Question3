@@ -1,0 +1,31 @@
+/*************************************************************************
+**	Author			:	Ryan Madar
+**	Program			:	hw1, q3
+**	Date Created		:	September 17, 2013
+**	Date Last Modified	:	September 17, 2013
+**	Usage			:	No command line arguments
+**
+**	Problem:
+
+3) Write a program that reads the value (x) from keyboard and calculates y based on the following
+formula:
+
+   y = 6x^2 + 12x - 27
+
+**	Pseudocode:
+**	1)	Declare variables for x
+**	2) 	Request user to insert value for x
+**	3) 	Calculate and state the answer of Y
+*************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int x;
+	cout << "Please type in a number for the variable X for the equation, y = 6x^2 + 12x - 27" << endl;
+    cin >> x;
+    cout << "Y = " << ((6*(x*x))+(12*x)-27);
+	return 0;
+}
