@@ -1,0 +1,45 @@
+/*************************************************************************
+** Author : Ryan Madar
+** Program : hw9, q5
+** Date Created : November 19, 2013
+** Date Last Modified : November 19, 2013
+** Usage : No command line arguments
+**
+** Problem:
+Write a program using a recursive function to display the rst 25 Fibonacci numbers
+
+** Pseudocode:
+** 1)Declare function fibonacciseries
+** 2)Fibonacciseries will find the next fibonacci number for the input
+** 3)Main inputs 1 through 25 into the fibonacciseries function and outputs
+*************************************************************************/
+
+#include <iostream>
+
+
+
+using namespace std;
+int fibonacciseries(int counter);
+
+int main() {
+    for (int counter = 1; counter <= 25; counter++){
+    cout << "Fibonacci ( " << counter << " ) = \t" << fibonacciseries(counter-1) << endl;
+    }
+    return 0;
+}
+
+int fibonacciseries(int number){
+
+    if (number == 1){
+        return 1;
+        }
+    else if (number == 0){
+        return 0;
+        }
+    else {
+        return fibonacciseries(number-1) + fibonacciseries(number -2);
+    }
+
+
+}
+
