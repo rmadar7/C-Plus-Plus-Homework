@@ -1,0 +1,45 @@
+/*************************************************************************
+**	Author			:	Ryan Madar
+**	Program			:	hw1, q5
+**	Date Created		:	September 17, 2013
+**	Date Last Modified	:	September 17, 2013
+**	Usage			:	No command line arguments
+**
+**	Problem:
+
+5) The workers have won a 7.6% pay increase, effective 6 months
+ retroactively. This program is to accept the previous salary,
+  then outputs the retroactive
+pay due the employee, the new annual salary, and the new
+ monthly salary.
+
+
+**	Pseudocode:
+**	1)	Declare a variable for the current annual salary, new annual salary, new monthly salary, and retroactive pay
+**	2) 	Request user to insert the current annual salary
+**	3) 	Calculate the new annual salary, new monthly salary, and retroactive pay
+**  4)  Display the new annual salary, monthly salary and retroactive pay
+*************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int as, nas, rp;
+    double  nms;
+    cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+
+	cout << "Please type in your currently annual salary" << endl;
+    cin >> as;
+    nas = as*1.076;
+    nms = as*1.076/12;
+    rp = as*.076/2;
+
+
+    cout << "New annual salary " << nas << endl;
+    cout << cout.precision(4) << "New monthly salary " << nms << endl;
+    cout << "Retroactive salary due " << rp;
+	return 0;
+}
