@@ -1,0 +1,174 @@
+/*************************************************************************
+** Author : Ryan Madar
+** Program : hw11, q5
+** Date Created : December 2, 2013
+** Date Last Modified : December 2, 2013
+** Usage : No command line arguments
+**
+** Problem:
+Write a tic-tac-toe game to be played between two players. Use an array to emulate the
+game board. The array can be one dimensional or two-dimensional. Initialize each element
+of the array to " " (underscore). Your program should start by displaying the initial board
+and then let player X and player O take turns. Associate X with player X's moves and O
+with O's. Determine as the game progresses whether there is a winner or the game tied. If
+one of the player wins the game identify it as player X or O. All X's or Os in a row, in a
+column or in a diagonal is a winning condition. When no more element is left the game is a tie.
+
+
+
+** Pseudocode:
+** 1)The game board will be a char with elements in it, I chose to start at 1 and give the dimension 4x4 to allow space.
+** 2)Initialize the array to _ and begin loop
+** 3)The players will choose a place to put their mark, and afterwards, the game will check the victory function to see if theres a winner after each move
+** 4)Once there's a winner, the loop will exit, and the game will return the result of the victory function and use that to determine the winner or a tie
+*************************************************************************/
+
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <vector>
+
+using namespace std;
+char victory(char board[4][4]);
+
+
+int main() {
+int column,row;
+char finalresult;
+char board[4][4];
+for (int n=1;n<=3;n++){
+    for (int j=1;j<=3;j++){
+        board[n][j]='_';
+    }
+}
+
+for(;;){
+if (victory(board)!= '_'){
+break;
+}
+    cout << "\tColumns\n\t1 2 3\n";
+    for (int n=1; n<=3; n++){
+    cout << "Row " << n << ":\t";
+        for (int j=1;j<=3;j++){
+            cout << board[n][j] << " ";
+        }
+        cout << endl;
+    }
+
+cout << "Player X's turn.\n";
+cout << "Enter a row and column to place an X\n";
+
+do{
+cout << "Row: ";
+cin >> row;
+cout << "Column: ";
+cin >> column;
+if (board[row][column]=='O' || board[row][column]=='X'){
+cout << "\nThat location is not available. Select another location.\n";
+}
+}while(board[row][column]=='O' || board[row][column]=='X');
+board[row][column] = 'X';
+
+    cout << "\tColumns\n\t1 2 3\n";
+    for (int n=1; n<=3; n++){
+    cout << "Row " << n << ":\t";
+        for (int j=1;j<=3;j++){
+            cout << board[n][j] << " ";
+        }
+        cout << endl;
+    }
+if (victory(board)!= '_'){
+break;
+}
+
+cout << "Player O's turn.\n";
+cout << "Enter a row and column to place an O\n";
+
+do{
+cout << "Row: ";
+cin >> row;
+cout << "Column: ";
+cin >> column;
+if (board[row][column]=='O' || board[row][column]=='X'){
+cout << "\nThat location is not available. Select another location.\n";
+}
+}while(board[row][column]=='O' || board[row][column]=='X');
+board[row][column] = 'O';
+}
+
+finalresult = victory(board);
+switch(finalresult){
+case 'X':
+cout << "\n\nPlayer 1 (X) Wins!\n\n";
+break;
+case 'O':
+cout << "\n\nPlayer 2 (O) Wins!\n\n";
+break;
+case 'T':
+cout << "\n\nThe game is a TIE!!!\n\n";
+break;
+}
+
+    return 0;
+}
+
+char victory(char board[4][4]){
+char result = '_';
+if (board[1][1]=='X' && board[1][2] == 'X' && board[1][3] == 'X'){
+    result = 'X';
+}
+else if (board[2][1]=='X' && board[2][2] == 'X' && board[2][3] == 'X'){
+    result = 'X';
+}
+else if (board[3][1]=='X' && board[3][2] == 'X' && board[3][3] == 'X'){
+    result = 'X';
+}
+else if (board[1][1]=='O' && board[1][2] == 'O' && board[1][3] == 'O'){
+    result = 'O';
+}
+else if (board[2][1]=='O' && board[2][2] == 'O' && board[2][3] == 'O'){
+    result = 'O';
+}
+else if (board[3][1]=='O' && board[3][2] == 'O' && board[3][3] == 'O'){
+    result = 'O';
+}
+else if (board[1][1]=='X' && board[2][1] == 'X' && board[3][1] == 'X'){
+    result = 'X';
+}
+else if (board[1][2]=='X' && board[2][2] == 'X' && board[3][2] == 'X'){
+    result = 'X';
+}
+else if (board[1][3]=='X' && board[2][3] == 'X' && board[3][3] == 'X'){
+    result = 'X';
+}
+else if (board[1][1]=='O' && board[2][1] == 'O' && board[3][1] == 'O'){
+    result = 'O';
+}
+else if (board[1][2]=='O' && board[2][2] == 'O' && board[3][2] == 'O'){
+    result = 'O';
+}
+else if (board[1][2]=='O' && board[2][2] == 'O' && board[3][2] == 'O'){
+    result = 'O';
+}
+else if (board[1][1]=='X' && board[2][2] == 'X' && board[3][3] == 'X'){
+    result = 'X';
+}
+else if (board[3][1]=='X' && board[2][2] == 'X' && board[1][3] == 'X'){
+    result = 'X';
+}
+else if (board[1][1]=='O' && board[2][2] == 'O' && board[3][3] == 'O'){
+    result = 'O';
+}
+else if (board[3][1]=='O' && board[2][2] == 'O' && board[1][3] == 'O'){
+    result = 'O';
+}
+else if (board[1][1]!= '_' && board[1][2]!= '_' && board[1][3]!= '_' && board[2][1]!= '_' && board[2][2]!= '_' && board[2][3]!= '_' && board[3][1]!= '_' && board[3][2]!= '_' && board[3][3]!= '_'){
+    result = 'T';
+}
+else{
+    result = '_';
+}
+
+
+return result;
+}
