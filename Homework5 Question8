@@ -1,0 +1,53 @@
+/*************************************************************************
+** Author : Ryan Madar
+** Program : hw5, q8
+** Date Created : October 14 2013
+** Date Last Modified : October 14, 2013
+** Usage : No command line arguments
+**
+** Problem:
+Extra credit (3%): Extend q6 above to get the lower and upper bounds for the range to
+look for the prime numbers.
+
+
+
+
+** Pseudocode:
+** 1)Create variable for the number of prime numbers, and a variable for what each number will divide by
+** 2)Run a for loop, this will be what runs through all numbers between user inputted lower bound and user inputted upper bound
+        At the start of the loop, set prime to true
+** 3)Nest a for loop, this will check whatever number the initial loop is on, by every number underneath it
+** 4)For every number underneath, if there is no remainder, set prime to false
+** 5)If theres a prime number, output the number, add one to count.
+*************************************************************************/
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    int counter = 0, number, LB, UB;
+    cout << "Lower Bound = ";
+    cin >> LB;
+    cout << "Upper Bound = ";
+    cin >> UB;
+
+    for (int i=LB;i<=UB;i++){
+        bool prime = true;
+        for (int t=i-1;t>=2;t--){
+            number = i%t;
+            if (number == 0){
+                prime = false;
+            }
+        }
+        if (prime){
+            cout << i << "\t";
+            counter++;
+        }
+
+    }
+    cout << "\n\nThere are " << counter << " prime numbers between " << LB << " and " << UB << endl;
+
+    return 0;
+}
