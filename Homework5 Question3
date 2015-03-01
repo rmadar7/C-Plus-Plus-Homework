@@ -1,0 +1,67 @@
+/*************************************************************************
+** Author : Ryan Madar
+** Program : hw5, q3
+** Date Created : October 14 2013
+** Date Last Modified : October 14, 2013
+** Usage : No command line arguments
+**
+** Problem:
+Pythagorean Triples: A right triangle can have sides that are all integers. A set of three
+integer values for the sides of a right triangle is called a Pythagorean triple. These three
+sides must satisfy the relationship that the sum of the squares of two of the sides is equal
+to the square of the hypotenuse. Find all unique Pythagorean triples for side1, side2 and
+hypotenuse, all no longer than 500. How many are there? Note that this problem specically
+asks you to exclude the duplicates, unlike the one on p.167 of the slides. For example, if you
+were to check all unique Pythagorean Triples less than 5 (rather than 500) your output must
+be
+3 4 5
+That is, it must NOT output both (3,4,5) and (4,3,5).
+
+
+
+** Pseudocode:
+** 1)Two sets of loop statements here. One for duplicates, one for no duplicates.
+** 2)Set 2 variables for the number of pythagorean triples, two variables for the number of loops
+** 3)Start a for statement with aside = 1 to 500, nest a for with bside=1 to 500, nest a for with cside
+        =1 to 500. Do the same for the second set of loops but instead of setting it equal to one, set
+        bside = aside and cside = bside
+** 4)Add one to loop at last nested for statement for each loop set
+** 5)If a^2+b^2=c^2, add one to triples for each loop set
+*************************************************************************/
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int triples = 0, triples2 = 0, loop = 0,loop2=0;
+
+    for (int aside = 1; aside<=500; ++aside){
+       for (int bside = 1; bside<=500;++bside){
+        for (int cside = 1; cside<=500;++cside){
+            loop++;
+            if (pow(aside,2)+pow(bside,2)==pow(cside,2)){
+                ++triples;
+            }
+        }
+       }
+    }
+    cout << "Number of Pythagorean Triples with duplicates : " << triples << endl;
+    cout << "\nThe innermost For loop is entered " << loop << " times.\n\n\n";
+
+    for (int aside2 = 1; aside2<=500; ++aside2){
+       for (int bside2 = aside2+1; bside2<=500;++bside2){
+        for (int cside2 = bside2+1; cside2<=500;++cside2){
+            loop2++;
+            if (pow(aside2,2)+pow(bside2,2)==pow(cside2,2)){
+                ++triples2;
+            }
+        }
+       }
+    }
+    cout << "Number of Pythagorean Triples (no duplicates) : " << triples2 << endl;
+    cout << "\nThe innermost For loop is entered " << loop2 << " times.\n\n\n";
+
+
+    return 0;
+}
